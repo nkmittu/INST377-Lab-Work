@@ -15,7 +15,15 @@
     background-color: brown;
     width: 500px;
     height: 150px;
-    position: absolute
+    position: absolute;
+    top: 580px;
+}
+
+.bird {
+    background-color: yellow;
+    width: 60px;
+    height: 45px;
+    position: absolute;
 }
 
 
