@@ -1,20 +1,24 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-use-before-define */
 let slidePosition = 0;
 const slides = document.querySelectorAll('.carousel__item');
 const totalSlides = slides.length;
 
-document.
-  querySelector('#carousel__button--next')
-  .addEventListener("click", function() {
+document
+  .querySelector('#carousel__button--next')
+  .addEventListener('click', () => {
+    // eslint-disable-next-line no-use-before-define
     moveToNextSlide();
   });
-document.
-  querySelector('#carousel__button--prev')
-  .addEventListener("click", function() {
+document
+  .querySelector('#carousel__button--prev')
+  .addEventListener('click', () => {
     moveToPrevSlide();
   });
 
 function updateSlidePosition() {
-  for (let slide of slides) {
+  for (const slide of slides) {
     slide.classList.remove('carousel__item--visible');
     slide.classList.add('carousel__item--hidden');
   }
