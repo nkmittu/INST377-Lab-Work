@@ -221,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[index].style.backgroundImage = 'none';
           squares[index].classList.remove('block2') || squares[index].classList.remove('block');
         });
-        // splice array
         const squaresRemoved = squares.splice(currentIndex, width);
         squares = squaresRemoved.concat(squares);
         squares.forEach((cell) => grid.appendChild(cell));

@@ -1,4 +1,8 @@
 :root {
+    /* default font size in browsers is 16px = 1em, we make
+       things easier for us and make 10px our base size.
+       We have 10/16 = 0.625 = 1rem as it is set on root element.
+       So 1rem is now 10px throughout our stylesheet.*/
     font-size: 0.625em;
   }
   
@@ -92,23 +96,23 @@
   }
   
   .block {
-    background-image: url('blue_block.png');
+    background-image: url(../images/blue_block.png);
   }
   
   .block2 {
-    background-image: url('purple_block.png');
+    background-image: url(../images/purple_block.png);
   }
   
   .block3 {
-    background-image: url('green_block.png');
+    background-image: url(../images/green_block.png);
   }
   
   .block4 {
-    background-image: url('navy_block.png');
+    background-image: url(../images/navy_block.png);
   }
   
   .block5 {
-    background-image: url('pink_block.png');
+    background-image: url(../images/pink_block.png);
   }
   
   .end {
@@ -170,7 +174,7 @@
   }
   
   .end {
-    background-image: url('blue_block.png');
+    background-image: url(/Users/limit/development/Tetris/images/blue_block.png);
   }
   
   .display {
