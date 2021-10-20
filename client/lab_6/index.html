@@ -13,47 +13,48 @@
             <ul class="suggestions"></ul>
         </form>
         <script>
-            async function windowActions() {
-            const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-            
-            const request = await fetch(endpoint)
-            const cities = await request.json()
-            
-            
-            function findMatches(wordToMatch, cities) {
-              return cities.filter(place => {
+        async function windowActions() {
+            const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+          
+            const request = await fetch(endpoint);
+            const arrayName = await request.json();
+          
+            function findMatches(wordToMatch, arrayName) {
+              return arrayName.filter((place) => {
                 const regex = new RegExp(wordToMatch, 'gi');
-                return place.city.match(regex) || place.state.match(regex)
+                return place.name.match(regex) || place.category.match(regex);
               });
             }
-            
+          
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             }
-            
+          
             function displayMatches(event) {
-              const matchArray = findMatches(this.value, cities);
-              const html = matchArray.map(place => {
-                const regex = new RegExp(this.value, 'gi');
-                const cityName = place.city.replace(regex, `<span class="hl">${event.target.value}</span>`);
-                const stateName = place.state.replace(regex, `<span class="hl">${event.target.value}</span>`);
+              const matchArray = findMatches(event.target.value, arrayName);
+              console.log(matchArray)
+              const html = matchArray.map((place) => {
+                const regex = new RegExp(event.target.value, 'gi');
                 return `
-                  <li>
-                    <span class="name">${cityName}, ${stateName}</span>
-                    <span class="population">${numberWithCommas(place.population)}</span>
-                  </li>
-                `;
+                                <li>
+                                  <span class="name"><span class="hl">${place.name}</span>, <span class="hl">${place.category}</span></span>
+                                </li>
+                              `;
               }).join('');
+              if (event.target.value) {
               suggestions.innerHTML = html;
+            } else {
+                suggestions.innerHTML = '';
             }
-            
+            }
+          
             const searchInput = document.querySelector('.search');
             const suggestions = document.querySelector('.suggestions');
-            
-            searchInput.addEventListener('change', (evt) => { displayMatches(evt) });
-            searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
-            }
-            window.onload = windowActions;
+          
+            searchInput.addEventListener('change', (evt) => { displayMatches(evt); });
+            searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
+          }
+          window.onload = windowActions;
             </script>
   </body>
 </html>
