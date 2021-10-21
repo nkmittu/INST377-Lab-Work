@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  /* Page Layout */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    align-items: center;
+}
+  
+.wrapper {
+    display: flex;
+}
+.container {
+    max-width: 960px;
+    margin-top: 25px;
+}
+  
+#mapid { 
+    height: 250px; 
+}

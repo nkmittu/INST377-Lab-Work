@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>INST377: Lab 7</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class='box is-size 4 has-background-primary has-text-black'>
+                    <h1>Nikeet Mittu Lab 7: JSON to Map Markers</h1>
+                </div>
+                <div class="has-text-black">Search the PGCounty Open Data Food Service Inspection API below by Zip Code:</div>
+                <div class="column">
+                    <div class="columns is-vcentered">
+                        <div class="column is-8">
+                            <form class="search-form">
+                                <input type="text" class="search" placeholder="Zip Code">
+                                <ul class="suggestions has-background-primary"></ul>
+                            </form>
+                        </div>
+                        <div class="column">
+                            <div id="mapid"></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script src = 'script.js'></script>
+    </body>
+</html>
