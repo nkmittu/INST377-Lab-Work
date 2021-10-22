@@ -41,6 +41,9 @@ async function windowActions() {
     const limitedList = matchArray.slice(0, 5);
     limitedList.forEach((place) => {
       const point = place.geocoded_column_1;
+      // if (!place.coordinates) {
+      // console.log(place);
+      // }
       const latlong = point.coordinates;
       const marker = latlong.reverse();
       L.marker(marker).addTo(mymap);
