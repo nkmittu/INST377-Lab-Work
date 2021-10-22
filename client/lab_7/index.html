@@ -15,19 +15,19 @@
     <body>
         <div class="wrapper">
             <div class="container">
-                <div class='box is-size 4 has-background-primary has-text-black'>
+                <div class='box is-size 8 has-background-link has-text-white'>
                     <h1>Nikeet Mittu Lab 7: JSON to Map Markers</h1>
                 </div>
-                <div class="has-text-black">Search the PGCounty Open Data Food Service Inspection API below by Zip Code:</div>
                 <div class="column">
                     <div class="columns is-vcentered">
-                        <div class="column is-8">
+                        <div class="column is-6">
                             <form class="search-form">
-                                <input type="text" class="search" placeholder="Zip Code">
-                                <ul class="suggestions has-background-primary"></ul>
+                                <label class="label">Search the PGCounty Open Data Food Service Inspection API:</label>
+                                <input type="text" class="search" placeholder="Enter a Zip Code">
+                                <ul class="suggestions has-background-link has-text-white"></ul>
                             </form>
                         </div>
-                        <div class="column">
+                        <div class="column is-vcentered">
                             <div id="mapid"></div>
                         </div>
                     </div>

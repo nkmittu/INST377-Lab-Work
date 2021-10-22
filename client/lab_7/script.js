@@ -17,6 +17,18 @@ async function windowActions() {
     accessToken: 'pk.eyJ1IjoibmttaXR0dSIsImEiOiJja3YwNDNqbG03aXJuMnBtYWJoeGp1NG4zIn0.QkhrysQck6g8vrQljL_Yzw'
   }).addTo(mymap);
 
+  function mapint(event) {
+
+  }
+
+  function removeMarkers(mymap) {
+    mymap.eachLayer((layer) => {
+      if (Object.keys(layer.options).length === 0) {
+        mymap.removeLayer(layer);
+      }
+    });
+  }
+
   function findMatches(wordToMatch, arrayName) {
     return arrayName.filter((place) => {
       const regex = new RegExp(wordToMatch, 'gi');
@@ -24,14 +36,16 @@ async function windowActions() {
     });
   }
 
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  }
-
   function displayMatches(event) {
-    const matchArray = findMatches(event.target.value, arrayName);
-    console.log(matchArray);
-    const html = matchArray.map((place) => {
+    const matchArray = findMatches(event.target.value, arrayName, mymap);
+    const limitedList = matchArray.slice(0, 5);
+    limitedList.forEach((place) => {
+      const point = place.geocoded_column_1;
+      const latlong = point.coordinates;
+      const marker = latlong.reverse();
+      L.marker(marker).addTo(mymap);
+    });
+    const html = limitedList.map((place) => {
       const regex = new RegExp(event.target.value, 'gi');
       return `
                         <li>
@@ -49,7 +63,14 @@ async function windowActions() {
   const searchInput = document.querySelector('.search');
   const suggestions = document.querySelector('.suggestions');
 
-  searchInput.addEventListener('change', (evt) => { displayMatches(evt); });
-  searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
+  searchInput.addEventListener('change', displayMatches);
+  searchInput.addEventListener('keyup', (evt) => {
+    if (!evt.target.value) {
+      document.querySelector('.suggestions').innerHTML = '';
+      removeMarkers(mymap);
+    } else {
+      displayMatches(evt);
+    }
+  });
 }
 window.onload = windowActions;
